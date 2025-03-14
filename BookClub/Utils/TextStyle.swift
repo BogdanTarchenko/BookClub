@@ -12,11 +12,12 @@ enum TextStyle {
     case h1
     case h2
     case body
+    case bodyBold
     case bodySmall
     case footnote
     case text
     case quote
-
+    
     var font: Font {
         switch self {
         case .title:
@@ -27,6 +28,8 @@ enum TextStyle {
             return .custom("AlumniSans-Bold", size: 24)
         case .body:
             return .custom("VelaSans-Regular", size: 16)
+        case .bodyBold:
+            return .custom("VelaSans-Bold", size: 16)
         case .bodySmall:
             return .custom("VelaSans-Regular", size: 14)
         case .footnote:
@@ -37,17 +40,17 @@ enum TextStyle {
             return .custom("Georgia-Italic", size: 16)
         }
     }
-
+    
     var lineSpacing: CGFloat {
         switch self {
         case .title:
-            return 0.8
+            return 0
         case .h1, .h2:
-            return 1.0
-        case .body, .bodySmall, .footnote, .quote:
-            return 1.3
+            return 0
+        case .body, .bodyBold, .bodySmall, .footnote, .quote:
+            return 0
         case .text:
-            return 1.5
+            return 0
         }
     }
 }
