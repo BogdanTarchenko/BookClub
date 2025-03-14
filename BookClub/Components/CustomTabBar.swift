@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct CustomTabBar: View {
+    @Binding var selectedTab: Tab
+    
+    enum Tab {
+        case library, search, bookmarks, logout
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -17,19 +23,21 @@ struct CustomTabBar: View {
                     Spacer()
                     
                     Button(action: {
-                        
+                        selectedTab = .library
                     }) {
                         Image("Library")
-                            .foregroundColor(.customWhite)
+                            .renderingMode(.template)
+                            .foregroundColor(selectedTab == .library ? .customWhite : .accentMedium)
                     }
                     
                     Spacer()
                     
                     Button(action: {
-                        
+                        selectedTab = .search
                     }) {
                         Image("Search")
-                            .foregroundColor(.customWhite)
+                            .renderingMode(.template)
+                            .foregroundColor(selectedTab == .search ? .customWhite : .accentMedium)
                     }
                     
                     Spacer()
@@ -39,19 +47,21 @@ struct CustomTabBar: View {
                     Spacer()
                     
                     Button(action: {
-                        
+                        selectedTab = .bookmarks
                     }) {
                         Image("Bookmarks")
-                            .foregroundColor(.customWhite)
+                            .renderingMode(.template)
+                            .foregroundColor(selectedTab == .bookmarks ? .customWhite : .accentMedium)
                     }
                     
                     Spacer()
                     
                     Button(action: {
-                        
+                        selectedTab = .logout
                     }) {
                         Image("LogOut")
-                            .foregroundColor(.customWhite)
+                            .renderingMode(.template)
+                            .foregroundColor(selectedTab == .logout ? .customWhite : .accentMedium)
                     }
                     
                     Spacer()
