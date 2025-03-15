@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SignInView: View {
-    // MARK: - Properties
-    
     @Binding var isLoggedIn: Bool
     @Binding var selectedTab: CustomTabBar.Tab
     
@@ -19,8 +17,6 @@ struct SignInView: View {
     private var isButtonActive: Bool {
         !email.isEmpty && !password.isEmpty
     }
-    
-    // MARK: - Body
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -36,7 +32,7 @@ struct SignInView: View {
                     .textStyle(.title)
                     .foregroundStyle(.customSecondary)
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal)
             
             AuthTextFieldsView(email: $email, password: $password)
             
@@ -46,8 +42,7 @@ struct SignInView: View {
                     selectedTab = .library
                 }
             })
-            
-            Spacer()
+            .padding(.bottom, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.accentDark)

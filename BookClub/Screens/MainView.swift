@@ -12,9 +12,9 @@ struct MainView: View {
     @State private var isLoggedIn: Bool = false
     
     var body: some View {
-        VStack {
-            if isLoggedIn {
-                VStack {
+        ZStack {
+            VStack {
+                if isLoggedIn {
                     switch selectedTab {
                     case .library:
                         LibraryView()
@@ -25,11 +25,16 @@ struct MainView: View {
                     case .logout:
                         SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
                     }
-                    
+                } else {
+                    SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
+                }
+            }
+            
+            if isLoggedIn {
+                VStack {
+                    Spacer()
                     CustomTabBar(selectedTab: $selectedTab)
                 }
-            } else {
-                SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
             }
         }
         .onChange(of: selectedTab) {
