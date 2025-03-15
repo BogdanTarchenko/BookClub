@@ -11,6 +11,7 @@ enum TextStyle {
     case title
     case h1
     case h2
+    case h3
     case body
     case bodyBold
     case bodySmall
@@ -26,6 +27,8 @@ enum TextStyle {
             return .custom("AlumniSans-Bold", size: 48)
         case .h2:
             return .custom("AlumniSans-Bold", size: 24)
+        case .h3:
+            return .custom("AlumniSans-Bold", size: 14)
         case .body:
             return .custom("VelaSans-Regular", size: 16)
         case .bodyBold:
@@ -45,7 +48,7 @@ enum TextStyle {
         switch self {
         case .title:
             return 0
-        case .h1, .h2:
+        case .h1, .h2, .h3:
             return 0
         case .body, .bodyBold, .bodySmall, .footnote, .quote:
             return 0

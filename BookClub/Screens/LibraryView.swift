@@ -30,6 +30,10 @@ struct LibraryView: View {
                 Text("ПОПУЛЯРНЫЕ КНИГИ")
                     .textStyle(.h2)
                     .foregroundStyle(.accentDark)
+                
+                Spacer(minLength: 16)
+                
+                BookGrid()
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .topLeading)
