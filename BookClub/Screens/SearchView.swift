@@ -14,33 +14,15 @@ struct SearchView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("НЕДАВНИЕ ЗАПРОСЫ")
-                        .textStyle(.h2)
-                        .foregroundStyle(.accentDark)
-                    
-                    Spacer(minLength: 16)
-                    
-                    RequestGrid()
-                    
-                    Spacer(minLength: 24)
-                    
-                    Text("ЖАНРЫ")
-                        .textStyle(.h2)
-                        .foregroundStyle(.accentDark)
-                    
-                    Spacer(minLength: 16)
-                    
-                    GenreGrid()
-                    
-                    Spacer(minLength: 24)
-                    
-                    Text("АВТОРЫ")
-                        .textStyle(.h2)
-                        .foregroundStyle(.accentDark)
-                    
-                    Spacer(minLength: 16)
-                    
-                    AuthorGrid()
+                    if searchText.isEmpty {
+                        RecentRequestsSection()
+                        Spacer(minLength: 24)
+                        GenresSection()
+                        Spacer(minLength: 24)
+                        AuthorsSection()
+                    } else {
+                        SearchResultsSection()
+                    }
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .topLeading)
