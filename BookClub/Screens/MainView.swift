@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var selectedTab: CustomTabBar.Tab = .library
     @State private var isLoggedIn: Bool = false
+    @State private var searchText: String = ""
     
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct MainView: View {
                     case .library:
                         LibraryView()
                     case .search:
-                        SearchView()
+                        SearchView(searchText: $searchText)
                     case .bookmarks:
                         BookmarksView()
                     case .logout:
@@ -30,7 +31,7 @@ struct MainView: View {
                 }
             }
             
-            if isLoggedIn {
+            if isLoggedIn && searchText.isEmpty {
                 VStack {
                     Spacer()
                     CustomTabBar(selectedTab: $selectedTab)
@@ -40,6 +41,9 @@ struct MainView: View {
         .onChange(of: selectedTab) {
             if selectedTab == .logout {
                 isLoggedIn = false
+            }
+            if selectedTab == .search {
+                searchText = ""
             }
         }
     }

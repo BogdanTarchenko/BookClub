@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var searchText: String = ""
+    @Binding var searchText: String
     
     var body: some View {
         NavigationStack {
