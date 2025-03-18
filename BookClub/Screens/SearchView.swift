@@ -21,7 +21,7 @@ struct SearchView: View {
                         Spacer(minLength: 24)
                         AuthorsSection()
                     } else {
-                        SearchResultsSection()
+                        SearchGrid()
                     }
                 }
                 .padding()

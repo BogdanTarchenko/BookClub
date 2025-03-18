@@ -15,6 +15,7 @@ enum TextStyle {
     case body
     case bodyBold
     case bodySmall
+    case bodySmallBold
     case footnote
     case text
     case quote
@@ -35,6 +36,8 @@ enum TextStyle {
             return .custom("VelaSans-Bold", size: 16)
         case .bodySmall:
             return .custom("VelaSans-Regular", size: 14)
+        case .bodySmallBold:
+            return .custom("VelaSans-Bold", size: 14)
         case .footnote:
             return .custom("VelaSans-Regular", size: 10)
         case .text:
@@ -50,7 +53,7 @@ enum TextStyle {
             return 0
         case .h1, .h2, .h3:
             return 0
-        case .body, .bodyBold, .bodySmall, .footnote, .quote:
+        case .body, .bodyBold, .bodySmall, .bodySmallBold, .footnote, .quote:
             return 0
         case .text:
             return 0
