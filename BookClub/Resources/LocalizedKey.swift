@@ -24,5 +24,7 @@ extension LocalizedKey {
         static let titleMessage = LocalizedKey(rawValue: "sign_in_title_message").localized
         static let title = LocalizedKey(rawValue: "sign_in_title").localized
         static let buttonTitle = LocalizedKey(rawValue: "sign_in_button_title").localized
+        static let emailPlaceholder = LocalizedKey(rawValue: "sign_in_email_placeholder").localized
+        static let passwordPlaceholder = LocalizedKey(rawValue: "sign_in_password_placeholder").localized
     }
 }

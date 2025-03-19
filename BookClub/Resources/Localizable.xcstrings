@@ -28,6 +28,28 @@
         }
       }
     },
+    "sign_in_email_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почта"
+          }
+        }
+      }
+    },
+    "sign_in_password_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароль"
+          }
+        }
+      }
+    },
     "sign_in_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -80,16 +102,10 @@
     "ОГЛАВЛЕНИЕ" : {
 
     },
-    "Пароль" : {
-
-    },
     "Поиск по книгам" : {
 
     },
     "ПОПУЛЯРНЫЕ КНИГИ" : {
-
-    },
-    "Почта" : {
 
     },
     "ПРОЧИТАНО" : {
