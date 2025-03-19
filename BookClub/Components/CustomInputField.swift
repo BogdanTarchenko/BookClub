@@ -35,6 +35,13 @@ struct CustomInputField: View {
     let type: InputFieldType
     @Binding var text: String
     @Binding var isPasswordVisible: Bool
+    var buttonImageName: String {
+        if type == .email {
+            return type.iconName
+        } else {
+            return isPasswordVisible ? "EyeOff" : "EyeOn"
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -95,14 +102,6 @@ private extension CustomInputField {
             text = ""
         case .password:
             isPasswordVisible.toggle()
-        }
-    }
-    
-    var buttonImageName: String {
-        if type == .email {
-            return type.iconName
-        } else {
-            return isPasswordVisible ? "EyeOff" : "EyeOn"
         }
     }
 }
