@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    // MARK: - Private Properties
     @State private var selectedTab: CustomTabBar.Tab = .library
     @State private var isLoggedIn: Bool = false
     @State private var searchText: String = ""
     @State private var isBookDetailsPresented: Bool = false
     @State private var selectedBook: BookDetailsModel? = nil
     
-    let currentBook = BookDetailsModel(
+    private let currentBook = BookDetailsModel(
         coverImageName: "TestBookBackground",
         title: "Код да Винчи",
         author: "Дэн Браун",
@@ -24,58 +25,88 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                if isLoggedIn {
-                    switch selectedTab {
-                    case .library:
-                        LibraryView()
-                    case .search:
-                        SearchView(searchText: $searchText)
-                    case .bookmarks:
-                        BookmarksView()
-                    case .logout:
-                        SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
-                    }
-                } else {
-                    SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
-                }
-            }
-            
-            if isLoggedIn && searchText.isEmpty && !isBookDetailsPresented {
-                VStack {
-                    Spacer()
-                    CustomTabBar(
-                        selectedTab: $selectedTab,
-                        isBookDetailsPresented: $isBookDetailsPresented,
-                        selectedBook: $selectedBook,
-                        currentBook: currentBook
-                    )
-                }
+            contentView
+            if shouldShowTabBar {
+                tabBarView
             }
         }
         .onChange(of: selectedTab) {
-            if selectedTab == .logout {
-                isLoggedIn = false
-            }
-            if selectedTab == .search {
-                searchText = ""
-            }
+            handleTabChange(selectedTab)
         }
         .fullScreenCover(isPresented: $isBookDetailsPresented) {
-            if let selectedBook = selectedBook {
-                BookDetails(book: selectedBook, isPresented: $isBookDetailsPresented)
-            }
+            bookDetailsView
         }
     }
 }
 
+// MARK: - View Components
+private extension MainView {
+    @ViewBuilder
+    var contentView: some View {
+        if !isLoggedIn {
+            SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
+        } else {
+            tabContent
+        }
+    }
+    
+    @ViewBuilder
+    var tabContent: some View {
+        switch selectedTab {
+        case .library:
+            LibraryView()
+        case .search:
+            SearchView(searchText: $searchText)
+        case .bookmarks:
+            BookmarksView()
+        case .logout:
+            SignInView(isLoggedIn: $isLoggedIn, selectedTab: $selectedTab)
+        }
+    }
+    
+    @ViewBuilder
+    var tabBarView: some View {
+        VStack {
+            Spacer()
+            CustomTabBar(
+                selectedTab: $selectedTab,
+                isBookDetailsPresented: $isBookDetailsPresented,
+                selectedBook: $selectedBook,
+                currentBook: currentBook
+            )
+        }
+    }
+    
+    @ViewBuilder
+    var bookDetailsView: some View {
+        if let selectedBook = selectedBook {
+            BookDetails(book: selectedBook, isPresented: $isBookDetailsPresented)
+        }
+    }
+    
+    var shouldShowTabBar: Bool {
+        isLoggedIn && searchText.isEmpty && !isBookDetailsPresented
+    }
+}
+
+// MARK: - Actions
+private extension MainView {
+    func handleTabChange(_ newTab: CustomTabBar.Tab) {
+        if newTab == .logout {
+            isLoggedIn = false
+        }
+        if newTab == .search {
+            searchText = ""
+        }
+    }
+}
+
+// MARK: - Constants
 private extension MainView {
     enum Constants {
         static let currentBookDescription: String = """
-        Секретный код скрыт в работах Леонардо да Винчи...
-        
-        Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
-        
+        Секретный код скрыт в работах Леонардо да Винчи...
+        Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
         Ключ к величайшей тайне, над которой человечество билось веками, наконец может быть найден...
         """
         

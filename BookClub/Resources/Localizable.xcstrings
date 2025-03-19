@@ -17,6 +17,39 @@
     "Key" : {
       "extractionState" : "manual"
     },
+    "library_new_books" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новинки"
+          }
+        }
+      }
+    },
+    "library_popular_books" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Популярные книги"
+          }
+        }
+      }
+    },
+    "library_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Библиотека"
+          }
+        }
+      }
+    },
     "sign_in_button_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -75,9 +108,6 @@
     "АВТОРЫ" : {
 
     },
-    "БИБЛИОТЕКА" : {
-
-    },
     "В избранное" : {
 
     },
@@ -96,16 +126,10 @@
     "НЕДАВНИЕ ЗАПРОСЫ" : {
 
     },
-    "НОВИНКИ" : {
-
-    },
     "ОГЛАВЛЕНИЕ" : {
 
     },
     "Поиск по книгам" : {
-
-    },
-    "ПОПУЛЯРНЫЕ КНИГИ" : {
 
     },
     "ПРОЧИТАНО" : {

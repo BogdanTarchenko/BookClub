@@ -27,4 +27,10 @@ extension LocalizedKey {
         static let emailPlaceholder = LocalizedKey(rawValue: "sign_in_email_placeholder").localized
         static let passwordPlaceholder = LocalizedKey(rawValue: "sign_in_password_placeholder").localized
     }
+    
+    enum Library {
+        static let title = LocalizedKey(rawValue: "library_title").localized
+        static let newBooks = LocalizedKey(rawValue: "library_new_books").localized
+        static let popularBooks = LocalizedKey(rawValue: "library_popular_books").localized
+    }
 }
