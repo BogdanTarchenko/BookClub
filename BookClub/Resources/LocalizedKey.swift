@@ -33,4 +33,8 @@ extension LocalizedKey {
         static let newBooks = LocalizedKey(rawValue: "library_new_books").localized
         static let popularBooks = LocalizedKey(rawValue: "library_popular_books").localized
     }
+    
+    enum Search {
+        static let searchPrompt = LocalizedKey(rawValue: "search_prompt").localized
+    }
 }

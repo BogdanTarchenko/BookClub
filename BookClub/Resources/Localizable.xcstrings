@@ -50,6 +50,17 @@
         }
       }
     },
+    "search_prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск по книгам"
+          }
+        }
+      }
+    },
     "sign_in_button_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,9 +138,6 @@
 
     },
     "ОГЛАВЛЕНИЕ" : {
-
-    },
-    "Поиск по книгам" : {
 
     },
     "ПРОЧИТАНО" : {
