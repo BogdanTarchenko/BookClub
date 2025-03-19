@@ -25,8 +25,10 @@ struct SearchView: View {
                     }
                 }
                 .padding()
+                .padding(.bottom, 80)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             }
+            .scrollIndicators(.hidden)
             .background(Color.background)
             .navigationTitle("")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Поиск по книгам")

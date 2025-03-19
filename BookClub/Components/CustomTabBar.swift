@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CustomTabBar: View {
     @Binding var selectedTab: Tab
+    @Binding var isBookDetailsPresented: Bool
+    @Binding var selectedBook: BookDetailsModel?
+    var currentBook: BookDetailsModel
     
     enum Tab {
         case library, search, bookmarks, logout
@@ -70,7 +73,8 @@ struct CustomTabBar: View {
             .padding(.bottom, 16)
             
             Button(action: {
-                
+                selectedBook = currentBook
+                isBookDetailsPresented = true
             }) {
                 Circle()
                     .foregroundColor(.customSecondary)

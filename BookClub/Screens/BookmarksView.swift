@@ -53,8 +53,10 @@ struct BookmarksView: View {
                 QuotesGrid()
             }
             .padding()
+            .padding(.bottom, 80)
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
+        .scrollIndicators(.hidden)
         .background(Color.background)
     }
 }
