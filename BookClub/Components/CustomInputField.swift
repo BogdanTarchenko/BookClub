@@ -37,7 +37,7 @@ struct CustomInputField: View {
                         TextField("", text: $text)
                             .foregroundColor(.accentLight)
                             .font(.custom("VelaSans-Regular", size: 14))
-                            .frame(height: 44)
+                            .frame(width: geometry.size.width * 0.7, height: 44)
                     } else {
                         SecureField("", text: $text)
                             .foregroundColor(.accentLight)

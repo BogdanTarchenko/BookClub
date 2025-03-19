@@ -59,4 +59,13 @@ enum TextStyle {
             return 0
         }
     }
+    
+    var isUppercased: Bool {
+        switch self {
+        case .title, .h1, .h2, .h3:
+            return true
+        default:
+            return false
+        }
+    }
 }

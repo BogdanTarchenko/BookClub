@@ -12,5 +12,6 @@ extension Text {
         self
             .font(style.font)
             .lineSpacing(style.lineSpacing)
+            .textCase(style.isUppercased ? .uppercase : .none)
     }
 }

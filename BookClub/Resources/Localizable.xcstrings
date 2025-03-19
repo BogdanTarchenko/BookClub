@@ -1,0 +1,109 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@ • %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ • %2$@"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "sign_in_button_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти"
+          }
+        }
+      }
+    },
+    "sign_in_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Книжный мир"
+          }
+        }
+      }
+    },
+    "sign_in_title_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открой для себя"
+          }
+        }
+      }
+    },
+    "АВТОРЫ" : {
+
+    },
+    "БИБЛИОТЕКА" : {
+
+    },
+    "В избранное" : {
+
+    },
+    "ЖАНРЫ" : {
+
+    },
+    "ЗАКЛАДКИ" : {
+
+    },
+    "ИЗБРАННЫЕ КНИГИ" : {
+
+    },
+    "Назад" : {
+
+    },
+    "НЕДАВНИЕ ЗАПРОСЫ" : {
+
+    },
+    "НОВИНКИ" : {
+
+    },
+    "ОГЛАВЛЕНИЕ" : {
+
+    },
+    "Пароль" : {
+
+    },
+    "Поиск по книгам" : {
+
+    },
+    "ПОПУЛЯРНЫЕ КНИГИ" : {
+
+    },
+    "Почта" : {
+
+    },
+    "ПРОЧИТАНО" : {
+
+    },
+    "ЦИТАТЫ" : {
+
+    },
+    "ЧИТАЕТЕ СЕЙЧАС" : {
+
+    },
+    "Читать" : {
+
+    }
+  },
+  "version" : "1.0"
+}
