@@ -47,4 +47,12 @@ extension LocalizedKey {
         static let favoriteBooks = LocalizedKey(rawValue: "bookmarks_favorite_books").localized
         static let quotes = LocalizedKey(rawValue: "bookmarks_quotes").localized
     }
+    
+    enum BookDetails {
+        static let progress = LocalizedKey(rawValue: "book_details_progress").localized
+        static let chapters = LocalizedKey(rawValue: "book_details_chapters").localized
+        static let read = LocalizedKey(rawValue: "book_details_read").localized
+        static let addToFavorites = LocalizedKey(rawValue: "book_details_add_to_favorites").localized
+        static let back = LocalizedKey(rawValue: "book_details_back").localized
+    }
 }

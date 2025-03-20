@@ -14,6 +14,61 @@
         }
       }
     },
+    "book_details_add_to_favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В избранное"
+          }
+        }
+      }
+    },
+    "book_details_back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назад"
+          }
+        }
+      }
+    },
+    "book_details_chapters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оглавление"
+          }
+        }
+      }
+    },
+    "book_details_progress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прочитано"
+          }
+        }
+      }
+    },
+    "book_details_read" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Читать"
+          }
+        }
+      }
+    },
     "bookmarks_currently_reading" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -189,21 +244,6 @@
           }
         }
       }
-    },
-    "В избранное" : {
-
-    },
-    "Назад" : {
-
-    },
-    "ОГЛАВЛЕНИЕ" : {
-
-    },
-    "ПРОЧИТАНО" : {
-
-    },
-    "Читать" : {
-
     }
   },
   "version" : "1.0"

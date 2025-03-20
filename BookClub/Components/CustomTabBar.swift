@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CustomTabBar: View {
+    // MARK: - Public Properties
     @Binding var selectedTab: Tab
     @Binding var isBookDetailsPresented: Bool
-    @Binding var selectedBook: BookDetailsModel?
-    var currentBook: BookDetailsModel
+    let currentBook: BookDetails
     
     enum Tab {
         case library, search, bookmarks, logout
@@ -19,73 +19,91 @@ struct CustomTabBar: View {
     
     var body: some View {
         ZStack {
-            HStack {
-                Spacer()
-                
-                Button(action: {
-                    selectedTab = .library
-                }) {
-                    Image("Library")
-                        .renderingMode(.template)
-                        .foregroundColor(selectedTab == .library ? .customWhite : .accentMedium)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    selectedTab = .search
-                }) {
-                    Image("Search")
-                        .renderingMode(.template)
-                        .foregroundColor(selectedTab == .search ? .customWhite : .accentMedium)
-                }
-                
-                Spacer()
-                
-                Spacer().frame(width: 80)
-                
-                Spacer()
-                
-                Button(action: {
-                    selectedTab = .bookmarks
-                }) {
-                    Image("Bookmarks")
-                        .renderingMode(.template)
-                        .foregroundColor(selectedTab == .bookmarks ? .customWhite : .accentMedium)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    selectedTab = .logout
-                }) {
-                    Image("LogOut")
-                        .renderingMode(.template)
-                        .foregroundColor(selectedTab == .logout ? .customWhite : .accentMedium)
-                }
-                
-                Spacer()
-            }
-            .frame(height: 64)
-            .background(.accentDark)
-            .cornerRadius(32)
-            .padding(.horizontal)
-            .padding(.bottom, 16)
-            
-            Button(action: {
-                selectedBook = currentBook
-                isBookDetailsPresented = true
-            }) {
-                Circle()
-                    .foregroundColor(.customSecondary)
-                    .frame(width: 80, height: 80)
-                    .overlay(
-                        Image("Play")
-                            .foregroundColor(.customWhite)
-                    )
-            }
-            .offset(y: -8)
+            tabBarBackground
+            centerButton
         }
-        .frame(height: 80)
+        .frame(height: Metrics.tabBarHeight)
+    }
+}
+
+// MARK: - View Components
+private extension CustomTabBar {
+    @ViewBuilder
+    var tabBarBackground: some View {
+        HStack {
+            Spacer()
+            
+            tabButton(tab: .library, image: ImageAssets.library)
+            
+            Spacer()
+            
+            tabButton(tab: .search, image: ImageAssets.search)
+            
+            Spacer()
+            
+            Spacer().frame(width: Metrics.centerButtonWidth)
+            
+            Spacer()
+            
+            tabButton(tab: .bookmarks, image: ImageAssets.bookmarks)
+            
+            Spacer()
+            
+            tabButton(tab: .logout, image: ImageAssets.logout)
+            
+            Spacer()
+        }
+        .frame(height: Metrics.backgroundHeight)
+        .background(.accentDark)
+        .cornerRadius(Metrics.backgroundCornerRadius)
+        .padding(.horizontal)
+        .padding(.bottom, Metrics.backgroundBottomPadding)
+    }
+    
+    @ViewBuilder
+    func tabButton(tab: Tab, image: String) -> some View {
+        Button(action: {
+            selectedTab = tab
+        }) {
+            Image(image)
+                .renderingMode(.template)
+                .foregroundColor(selectedTab == tab ? .customWhite : .accentMedium)
+        }
+    }
+    
+    @ViewBuilder
+    var centerButton: some View {
+        Button(action: {
+            isBookDetailsPresented = true
+        }) {
+            Circle()
+                .foregroundColor(.customSecondary)
+                .frame(width: Metrics.centerButtonWidth, height: Metrics.centerButtonWidth)
+                .overlay(
+                    Image(ImageAssets.play)
+                        .foregroundColor(.customWhite)
+                )
+        }
+        .offset(y: Metrics.centerButtonOffset)
+    }
+}
+
+// MARK: - Metrics & Image Assets
+private extension CustomTabBar {
+    enum Metrics {
+        static let tabBarHeight: CGFloat = 80
+        static let backgroundHeight: CGFloat = 64
+        static let backgroundCornerRadius: CGFloat = 32
+        static let backgroundBottomPadding: CGFloat = 16
+        static let centerButtonWidth: CGFloat = 80
+        static let centerButtonOffset: CGFloat = -8
+    }
+    
+    enum ImageAssets {
+        static let library = "Library"
+        static let search = "Search"
+        static let bookmarks = "Bookmarks"
+        static let logout = "LogOut"
+        static let play = "Play"
     }
 }

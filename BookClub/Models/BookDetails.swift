@@ -1,5 +1,5 @@
 //
-//  BookDetailsModel.swift
+//  BookDetails.swift
 //  BookClub
 //
 //  Created by Богдан Тарченко on 19.03.2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookDetailsModel: Identifiable {
+struct BookDetails: Identifiable {
     let id = UUID()
     let coverImageName: String
     let title: String
