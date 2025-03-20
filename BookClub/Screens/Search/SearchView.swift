@@ -49,9 +49,17 @@ private extension SearchView {
     @ViewBuilder
     var emptySearchContent: some View {
         VStack(alignment: .leading, spacing: Metrics.sectionSpacing) {
-            recentRequestsSection
-            genresSection
-            authorsSection
+            if !viewModel.requests.isEmpty {
+                recentRequestsSection
+            }
+            
+            if !viewModel.genres.isEmpty {
+                genresSection
+            }
+            
+            if !viewModel.authors.isEmpty {
+                authorsSection
+            }
         }
     }
     
@@ -211,7 +219,7 @@ private extension SearchView {
             Spacer()
             
             Button(action: {
-                // TODO: добавить метод для удаления
+                viewModel.removeRequest(request)
             }) {
                 Image(ImageAssets.close)
                     .renderingMode(.template)

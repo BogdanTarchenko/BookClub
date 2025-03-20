@@ -34,6 +34,10 @@ final class SearchViewModel: ObservableObject {
         self.genres = SampleData.genres
         self.authors = SampleData.authors
     }
+    
+    func removeRequest(_ request: Request) {
+        requests.removeAll { $0.id == request.id }
+    }
 }
 
 // MARK: - Sample Data
