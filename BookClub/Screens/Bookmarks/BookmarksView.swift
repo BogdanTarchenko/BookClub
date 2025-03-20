@@ -101,52 +101,60 @@ private extension BookmarksView {
     
     @ViewBuilder
     var playButton: some View {
-        ZStack {
-            Circle()
-                .foregroundColor(.accentDark)
-                .frame(width: Metrics.playButtonSize, height: Metrics.playButtonSize)
-            
-            Image(ImageAssets.play)
-                .foregroundColor(.customWhite)
+        Button(action: {
+            viewModel.showCurrentBookDetails()
+        }) {
+            ZStack {
+                Circle()
+                    .foregroundColor(.accentDark)
+                    .frame(width: Metrics.playButtonSize, height: Metrics.playButtonSize)
+                
+                Image(ImageAssets.play)
+                    .foregroundColor(.customWhite)
+            }
         }
     }
     
     @ViewBuilder
     var currentBookView: some View {
-        HStack(alignment: .center, spacing: Metrics.bookItemSpacing) {
-            Image(viewModel.currentBook.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
-                .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
-                .clipped()
-            
-            VStack(alignment: .leading, spacing: 0) {
-                Text(viewModel.currentBook.title.uppercased())
-                    .textStyle(.h2)
-                    .foregroundStyle(.accentDark)
+        Button(action: {
+            viewModel.showCurrentBookDetails()
+        }) {
+            HStack(alignment: .center, spacing: Metrics.bookItemSpacing) {
+                Image(viewModel.currentBook.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
+                    .clipped()
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(viewModel.currentBook.title.uppercased())
+                        .textStyle(.h2)
+                        .foregroundStyle(.accentDark)
+                    
+                    Spacer()
+                        .frame(height: Metrics.titleSpacing)
+                    
+                    Text(viewModel.currentBook.chapter)
+                        .textStyle(.bodySmallBold)
+                        .foregroundStyle(.accentDark)
+                    
+                    Spacer()
+                        .frame(height: Metrics.progressSpacing)
+                    
+                    ProgressView(value: viewModel.currentBook.progress)
+                        .background(Color.accentMedium)
+                        .tint(.accentDark)
+                        .frame(height: Metrics.progressHeight)
+                        .clipShape(.rect(cornerRadius: Metrics.progressCornerRadius))
+                }
                 
                 Spacer()
-                    .frame(height: Metrics.titleSpacing)
-                
-                Text(viewModel.currentBook.chapter)
-                    .textStyle(.bodySmallBold)
-                    .foregroundStyle(.accentDark)
-                
-                Spacer()
-                    .frame(height: Metrics.progressSpacing)
-                
-                ProgressView(value: viewModel.currentBook.progress)
-                    .background(Color.accentMedium)
-                    .tint(.accentDark)
-                    .frame(height: Metrics.progressHeight)
-                    .clipShape(.rect(cornerRadius: Metrics.progressCornerRadius))
             }
-            .padding(.top, Metrics.currentBookNegativeTopPadding)
-            
-            Spacer()
+            .frame(height: Metrics.bookImageHeight)
         }
-        .frame(height: Metrics.bookImageHeight)
+        .buttonStyle(PlainButtonStyle())
     }
     
     @ViewBuilder

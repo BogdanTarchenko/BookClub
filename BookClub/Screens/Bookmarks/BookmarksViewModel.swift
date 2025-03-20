@@ -55,6 +55,30 @@ final class BookmarksViewModel: ObservableObject {
         )
         isBookDetailsPresented = true
     }
+    
+    func showCurrentBookDetails() {
+        selectedBook = BookDetails(
+            coverImageName: currentBook.imageName,
+            title: currentBook.title,
+            author: "Дэн Браун",
+            description: """
+            Секретный код скрыт в работах Леонардо да Винчи...
+            Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
+            Ключ к величайшей тайне, над которой человечество билось веками, наконец может быть найден...
+            """,
+            progress: currentBook.progress,
+            chapters: [
+                Chapter(title: currentBook.chapter, isRead: false, isReading: true),
+                Chapter(title: "Глава 1", isRead: false, isReading: false),
+                Chapter(title: "Глава 2", isRead: false, isReading: false),
+                Chapter(title: "Глава 3", isRead: false, isReading: false),
+                Chapter(title: "Глава 4", isRead: false, isReading: false),
+                Chapter(title: "Глава 5", isRead: false, isReading: false),
+                Chapter(title: "Глава 6", isRead: false, isReading: false),
+            ]
+        )
+        isBookDetailsPresented = true
+    }
 }
 
 // MARK: - Sample Data
