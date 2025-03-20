@@ -11,6 +11,8 @@ import SwiftUI
 final class LibraryViewModel: ObservableObject {
     // MARK: - Public Properties
     @Published var books: [Book]
+    @Published var selectedBook: BookDetails?
+    @Published var isBookDetailsPresented: Bool = false
     
     // MARK: - Init
     init(books: [Book]? = nil) {
@@ -20,6 +22,28 @@ final class LibraryViewModel: ObservableObject {
     // MARK: - Public Methods
     func loadBooks() {
         self.books = SampleData.books
+    }
+    
+    func showBookDetails(for book: Book) {
+        selectedBook = BookDetails(
+            coverImageName: book.imageName,
+            title: book.title,
+            author: book.author,
+            description: """
+            Секретный код скрыт в работах Леонардо да Винчи...
+            Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
+            Ключ к величайшей тайне, над которой человечество билось веками, наконец может быть найден...
+            """,
+            progress: 0.3,
+            chapters: [
+                Chapter(title: "Пролог", isRead: false, isReading: true),
+                Chapter(title: "Глава 1", isRead: false, isReading: false),
+                Chapter(title: "Глава 2", isRead: false, isReading: false),
+                Chapter(title: "Глава 3", isRead: false, isReading: false),
+                Chapter(title: "Глава 4", isRead: false, isReading: false)
+            ]
+        )
+        isBookDetailsPresented = true
     }
 }
 

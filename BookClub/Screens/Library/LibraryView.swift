@@ -14,10 +14,8 @@ struct LibraryView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                headerView
-                Spacer(minLength: Metrics.sectionSpacing)
+                header
                 newBooksSection
-                Spacer(minLength: Metrics.sectionSpacing)
                 popularBooksSection
             }
             .padding()
@@ -29,35 +27,50 @@ struct LibraryView: View {
         .onAppear {
             viewModel.loadBooks()
         }
+        .fullScreenCover(isPresented: $viewModel.isBookDetailsPresented) {
+            if let selectedBook = viewModel.selectedBook {
+                BookDetailsView(
+                    isPresented: $viewModel.isBookDetailsPresented,
+                    book: selectedBook
+                )
+            }
+        }
     }
 }
 
 // MARK: - View Components
 private extension LibraryView {
     @ViewBuilder
-    var headerView: some View {
+    var header: some View {
         Text(LocalizedKey.Library.title)
             .textStyle(.h1)
             .foregroundStyle(.customSecondary)
+            .padding(.bottom, Metrics.sectionSpacing)
     }
     
     @ViewBuilder
     var newBooksSection: some View {
-        VStack(alignment: .leading, spacing: Metrics.titleContentSpacing) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(LocalizedKey.Library.newBooks)
                 .textStyle(.h2)
                 .foregroundStyle(.accentDark)
             
+            Spacer(minLength: Metrics.titleSpacing)
+            
             SlideCarouselView()
+            
+            Spacer(minLength: Metrics.sectionSpacing)
         }
     }
     
     @ViewBuilder
     var popularBooksSection: some View {
-        VStack(alignment: .leading, spacing: Metrics.titleContentSpacing) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(LocalizedKey.Library.popularBooks)
                 .textStyle(.h2)
                 .foregroundStyle(.accentDark)
+            
+            Spacer(minLength: Metrics.titleSpacing)
             
             bookGrid
         }
@@ -65,12 +78,8 @@ private extension LibraryView {
     
     @ViewBuilder
     var bookGrid: some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ], spacing: Metrics.gridSpacing) {
-            ForEach(viewModel.books, id: \.id) { book in
+        LazyVGrid(columns: [GridItem(.flexible())], spacing: Metrics.gridSpacing) {
+            ForEach(viewModel.books) { book in
                 bookItem(book: book)
             }
         }
@@ -78,49 +87,50 @@ private extension LibraryView {
     
     @ViewBuilder
     func bookItem(book: Book) -> some View {
-        VStack(alignment: .leading, spacing: Metrics.bookItemSpacing) {
-            Image(book.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: Metrics.coverHeight)
-                .clipped()
-                .cornerRadius(Metrics.coverCornerRadius)
-                .padding(.bottom, Metrics.coverBottomPadding)
-            
-            VStack(alignment: .leading, spacing: Metrics.textSpacing) {
-                Text(book.title)
-                    .textStyle(.h3)
-                    .foregroundStyle(.accentDark)
-                    .lineLimit(Metrics.titleLineLimit)
+        Button(action: {
+            viewModel.showBookDetails(for: book)
+        }) {
+            HStack(alignment: .center, spacing: Metrics.bookItemSpacing) {
+                Image(book.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
+                    .clipped()
                 
-                Text(book.author)
-                    .textStyle(.footnote)
-                    .foregroundStyle(.accentDark)
+                VStack(alignment: .leading, spacing: Metrics.textSpacing) {
+                    Text(book.title.uppercased())
+                        .textStyle(.h2)
+                        .lineLimit(Metrics.titleLineLimit)
+                        .foregroundStyle(.accentDark)
+                    
+                    Text(book.author)
+                        .textStyle(.bodySmall)
+                        .lineLimit(Metrics.authorLineLimit)
+                        .foregroundStyle(.accentDark)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxHeight: .infinity)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
 // MARK: - Metrics
 private extension LibraryView {
     enum Metrics {
-        // Layout
-        static let sectionSpacing: CGFloat = 24
-        static let titleContentSpacing: CGFloat = 16
         static let bottomPadding: CGFloat = 80
-        
-        // Grid
-        static let gridSpacing: CGFloat = 16
-        
-        // Book Item
-        static let bookItemSpacing: CGFloat = 4
-        static let coverHeight: CGFloat = UIScreen.main.bounds.height * 0.204
-        static let coverCornerRadius: CGFloat = 4
-        static let coverBottomPadding: CGFloat = 4
-        static let textSpacing: CGFloat = 2
+        static let sectionSpacing: CGFloat = 24
+        static let titleSpacing: CGFloat = 16
+        static let gridSpacing: CGFloat = 8
+        static let bookItemSpacing: CGFloat = 16
+        static let bookImageWidth: CGFloat = 80
+        static let bookImageHeight: CGFloat = 126
+        static let bookImageCornerRadius: CGFloat = 4
+        static let textSpacing: CGFloat = 4
         static let titleLineLimit: Int = 2
+        static let authorLineLimit: Int = 2
     }
 }
