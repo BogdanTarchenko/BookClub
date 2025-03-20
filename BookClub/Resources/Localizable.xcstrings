@@ -14,9 +14,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "library_new_books" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -50,6 +47,28 @@
         }
       }
     },
+    "search_authors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторы"
+          }
+        }
+      }
+    },
+    "search_genres" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жанры"
+          }
+        }
+      }
+    },
     "search_prompt" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -57,6 +76,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск по книгам"
+          }
+        }
+      }
+    },
+    "search_recent_requests" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недавние запросы"
           }
         }
       }
@@ -116,13 +146,7 @@
         }
       }
     },
-    "АВТОРЫ" : {
-
-    },
     "В избранное" : {
-
-    },
-    "ЖАНРЫ" : {
 
     },
     "ЗАКЛАДКИ" : {
@@ -132,9 +156,6 @@
 
     },
     "Назад" : {
-
-    },
-    "НЕДАВНИЕ ЗАПРОСЫ" : {
 
     },
     "ОГЛАВЛЕНИЕ" : {

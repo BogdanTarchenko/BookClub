@@ -36,5 +36,8 @@ extension LocalizedKey {
     
     enum Search {
         static let searchPrompt = LocalizedKey(rawValue: "search_prompt").localized
+        static let recentRequests = LocalizedKey(rawValue: "search_recent_requests").localized
+        static let genres = LocalizedKey(rawValue: "search_genres").localized
+        static let authors = LocalizedKey(rawValue: "search_authors").localized
     }
 }
