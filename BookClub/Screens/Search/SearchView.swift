@@ -177,6 +177,9 @@ private extension SearchView {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.accentLight)
         .clipShape(.rect(cornerRadius: Metrics.itemCornerRadius))
+        .onTapGesture {
+            searchText = genre.title
+        }
     }
     
     @ViewBuilder
@@ -199,6 +202,9 @@ private extension SearchView {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.accentLight)
         .clipShape(.rect(cornerRadius: Metrics.itemCornerRadius))
+        .onTapGesture {
+            searchText = author.title
+        }
     }
     
     @ViewBuilder
@@ -228,6 +234,9 @@ private extension SearchView {
         .background(Color.accentLight)
         .clipShape(.rect(cornerRadius: Metrics.itemCornerRadius))
         .frame(maxHeight: .infinity)
+        .onTapGesture {
+            searchText = request.title
+        }
     }
 }
 
