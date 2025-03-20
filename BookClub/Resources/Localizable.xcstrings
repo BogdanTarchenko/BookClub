@@ -14,6 +14,50 @@
         }
       }
     },
+    "bookmarks_currently_reading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Читаете сейчас"
+          }
+        }
+      }
+    },
+    "bookmarks_favorite_books" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Избранные книги"
+          }
+        }
+      }
+    },
+    "bookmarks_quotes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цитаты"
+          }
+        }
+      }
+    },
+    "bookmarks_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закладки"
+          }
+        }
+      }
+    },
     "library_new_books" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -149,12 +193,6 @@
     "В избранное" : {
 
     },
-    "ЗАКЛАДКИ" : {
-
-    },
-    "ИЗБРАННЫЕ КНИГИ" : {
-
-    },
     "Назад" : {
 
     },
@@ -162,12 +200,6 @@
 
     },
     "ПРОЧИТАНО" : {
-
-    },
-    "ЦИТАТЫ" : {
-
-    },
-    "ЧИТАЕТЕ СЕЙЧАС" : {
 
     },
     "Читать" : {

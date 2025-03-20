@@ -40,4 +40,11 @@ extension LocalizedKey {
         static let genres = LocalizedKey(rawValue: "search_genres").localized
         static let authors = LocalizedKey(rawValue: "search_authors").localized
     }
+    
+    enum Bookmarks {
+        static let title = LocalizedKey(rawValue: "bookmarks_title").localized
+        static let currentlyReading = LocalizedKey(rawValue: "bookmarks_currently_reading").localized
+        static let favoriteBooks = LocalizedKey(rawValue: "bookmarks_favorite_books").localized
+        static let quotes = LocalizedKey(rawValue: "bookmarks_quotes").localized
+    }
 }
