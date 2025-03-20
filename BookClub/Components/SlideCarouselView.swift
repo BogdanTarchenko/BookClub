@@ -40,7 +40,7 @@ struct SlideCarouselView: View {
     }
 }
 
-// MARK: - Card View
+// MARK: - Card View Components
 private extension SlideCarouselView {
     @ViewBuilder
     func cardView(_ card: SlideCarouselCard, screenWidth: CGFloat) -> some View {
@@ -74,7 +74,9 @@ private extension SlideCarouselView {
             cardGradient(size: size, frameWidth: frameWidth)
             
             if isFullyVisible {
-                SlideCarouselLabel(description: card.description, title: card.title)
+                carouselLabel(description: card.description, title: card.title)
+                    .padding(.bottom, Metrics.labelBottomPadding)
+                    .padding(.horizontal, Metrics.labelHorizontalPadding)
             }
         }
         .offset(x: minOffsetX(for: cappedWidth))
@@ -97,6 +99,21 @@ private extension SlideCarouselView {
         .clipShape(.rect(cornerRadius: Metrics.cornerRadius))
     }
     
+    @ViewBuilder
+    func carouselLabel(description: String, title: String) -> some View {
+        VStack(alignment: .leading, spacing: Metrics.labelSpacing) {
+            Text(description)
+                .textStyle(.bodySmall)
+                .foregroundStyle(.customWhite)
+                .lineLimit(Metrics.descriptionLineLimit)
+            
+            Text(title)
+                .textStyle(.h2)
+                .foregroundStyle(.customWhite)
+        }
+        .padding(.vertical, Metrics.labelVerticalPadding)
+    }
+    
     func minOffsetX(for cappedWidth: CGFloat) -> CGFloat {
         cappedWidth > 0 ? 0 : -cappedWidth
     }
@@ -113,6 +130,7 @@ private extension SlideCarouselView {
 // MARK: - Metrics & Constants
 private extension SlideCarouselView {
     enum Metrics {
+        // Carousel
         static let cardWidth: CGFloat = 252
         static let carouselHeight: CGFloat = 256
         static let cardSpacing: CGFloat = 8
@@ -120,6 +138,13 @@ private extension SlideCarouselView {
         static let widthDivisor: CGFloat = 260
         static let maxWidth: CGFloat = 196
         static let visibilityThreshold: CGFloat = 200
+        
+        // Label
+        static let labelSpacing: CGFloat = 4
+        static let labelVerticalPadding: CGFloat = 8
+        static let labelBottomPadding: CGFloat = 16
+        static let labelHorizontalPadding: CGFloat = 16
+        static let descriptionLineLimit: Int = 2
     }
     
     enum SampleData {

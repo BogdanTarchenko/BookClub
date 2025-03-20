@@ -1,36 +1,30 @@
 //
-//  BookGrid.swift
+//  LibraryViewModel.swift
 //  BookClub
 //
 //  Created by Богдан Тарченко on 15.03.2025.
 //
 
+import Foundation
 import SwiftUI
 
-struct BookGrid: View {
-    // MARK: - Private Properties
-    private let books: [Book]
-    private let columns: [GridItem]
-    private let spacing: CGFloat
+final class LibraryViewModel: ObservableObject {
+    // MARK: - Public Properties
+    @Published var books: [Book]
     
     // MARK: - Init
-    init(books: [Book]? = nil, columns: Int = 3, spacing: CGFloat = 16) {
+    init(books: [Book]? = nil) {
         self.books = books ?? SampleData.books
-        self.columns = Array(repeating: GridItem(.flexible()), count: columns)
-        self.spacing = spacing
     }
     
-    var body: some View {
-        LazyVGrid(columns: columns, spacing: spacing) {
-            ForEach(books, id: \.id) { book in
-                BookItem(book: book)
-            }
-        }
+    // MARK: - Public Methods
+    func loadBooks() {
+        self.books = SampleData.books
     }
 }
 
 // MARK: - Sample Data
-private extension BookGrid {
+extension LibraryViewModel {
     enum SampleData {
         static let books: [Book] = [
             Book(imageName: "TestBook1", title: "ПОНЕДЕЛЬНИК НАЧИНАЕТСЯ В СУББОТУ", author: "Эрик Мария Ремарк"),
@@ -50,4 +44,4 @@ private extension BookGrid {
             Book(imageName: "TestBook3", title: "ПРЕСТУПЛЕНИЕ И НАКАЗАНИЕ", author: "Фёдор Достоевский"),
         ]
     }
-}
+} 
