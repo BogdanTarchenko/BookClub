@@ -14,6 +14,9 @@ final class SearchViewModel: ObservableObject {
     @Published var genres: [Genre]
     @Published var authors: [Author]
     
+    @Published var selectedBook: BookDetails?
+    @Published var isBookDetailsPresented: Bool = false
+    
     // MARK: - Init
     init(
         searchResults: [SearchResult]? = nil,
@@ -33,6 +36,28 @@ final class SearchViewModel: ObservableObject {
         self.requests = SampleData.requests
         self.genres = SampleData.genres
         self.authors = SampleData.authors
+    }
+    
+    func showBookDetails(for book: SearchResult) {
+        selectedBook = BookDetails(
+            coverImageName: book.imageName,
+            title: book.title,
+            author: book.author,
+            description: """
+            Секретный код скрыт в работах Леонардо да Винчи...
+            Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
+            Ключ к величайшей тайне, над которой человечество билось веками, наконец может быть найден...
+            """,
+            progress: 0.3,
+            chapters: [
+                Chapter(title: "Пролог", isRead: false, isReading: true),
+                Chapter(title: "Глава 1", isRead: false, isReading: false),
+                Chapter(title: "Глава 2", isRead: false, isReading: false),
+                Chapter(title: "Глава 3", isRead: false, isReading: false),
+                Chapter(title: "Глава 4", isRead: false, isReading: false)
+            ]
+        )
+        isBookDetailsPresented = true
     }
     
     func removeRequest(_ request: Request) {

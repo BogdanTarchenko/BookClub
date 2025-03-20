@@ -40,6 +40,14 @@ struct SearchView: View {
             .onAppear {
                 viewModel.loadData()
             }
+            .fullScreenCover(isPresented: $viewModel.isBookDetailsPresented) {
+                if let selectedBook = viewModel.selectedBook {
+                    BookDetailsView(
+                        isPresented: $viewModel.isBookDetailsPresented,
+                        book: selectedBook
+                    )
+                }
+            }
         }
     }
 }
@@ -139,29 +147,34 @@ private extension SearchView {
     
     @ViewBuilder
     func searchResultItem(result: SearchResult) -> some View {
-        HStack(alignment: .center, spacing: Metrics.searchResultItemSpacing) {
-            Image(result.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: Metrics.searchResultImageWidth, height: Metrics.searchResultImageHeight)
-                .clipShape(.rect(cornerRadius: Metrics.searchResultImageCornerRadius))
-                .clipped()
-            
-            VStack(alignment: .leading, spacing: Metrics.searchResultTextSpacing) {
-                Text(result.title.uppercased())
-                    .textStyle(.h2)
-                    .lineLimit(Metrics.searchResultTitleLineLimit)
-                    .foregroundStyle(.accentDark)
+        Button(action: {
+            viewModel.showBookDetails(for: result)
+        }) {
+            HStack(alignment: .center, spacing: Metrics.searchResultItemSpacing) {
+                Image(result.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: Metrics.searchResultImageWidth, height: Metrics.searchResultImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.searchResultImageCornerRadius))
+                    .clipped()
                 
-                Text(result.author)
-                    .textStyle(.bodySmall)
-                    .lineLimit(Metrics.searchResultAuthorLineLimit)
-                    .foregroundStyle(.accentDark)
+                VStack(alignment: .leading, spacing: Metrics.searchResultTextSpacing) {
+                    Text(result.title.uppercased())
+                        .textStyle(.h2)
+                        .lineLimit(Metrics.searchResultTitleLineLimit)
+                        .foregroundStyle(.accentDark)
+                    
+                    Text(result.author)
+                        .textStyle(.bodySmall)
+                        .lineLimit(Metrics.searchResultAuthorLineLimit)
+                        .foregroundStyle(.accentDark)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .buttonStyle(PlainButtonStyle())
     }
     
     @ViewBuilder
