@@ -52,11 +52,9 @@ private extension SearchView {
             if !viewModel.requests.isEmpty {
                 recentRequestsSection
             }
-            
             if !viewModel.genres.isEmpty {
                 genresSection
             }
-            
             if !viewModel.authors.isEmpty {
                 authorsSection
             }

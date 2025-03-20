@@ -16,7 +16,9 @@ struct LibraryView: View {
             VStack(alignment: .leading, spacing: 0) {
                 header
                 newBooksSection
-                popularBooksSection
+                if !viewModel.books.isEmpty {
+                    popularBooksSection
+                }
             }
             .padding()
             .padding(.bottom, Metrics.bottomPadding)

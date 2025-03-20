@@ -239,7 +239,7 @@ private extension BookmarksView {
     enum Metrics {
         static let bottomPadding: CGFloat = 80
         static let sectionSpacing: CGFloat = 24
-        static let titleSpacing: CGFloat = 4
+        static let titleSpacing: CGFloat = 16
         static let itemSpacing: CGFloat = 8
         static let headerHeight: CGFloat = 48
         static let gridSpacing: CGFloat = 8
