@@ -14,15 +14,14 @@ final class BookDetailsViewModel: ObservableObject {
     @Published var formattedDescription: String
     
     // MARK: - Init
-    init(book: BookDetails? = nil) {
-        self.book = book ?? SampleData.book
-        self.formattedDescription = Self.formatDescription(book?.description ?? SampleData.book.description)
+    init(book: BookDetails) {
+        self.book = book
+        self.formattedDescription = Self.formatDescription(book.description)
     }
     
     // MARK: - Public Methods
     func loadData() {
-        self.book = SampleData.book
-        self.formattedDescription = Self.formatDescription(SampleData.book.description)
+        self.formattedDescription = Self.formatDescription(book.description)
     }
     
     // MARK: - Private Methods

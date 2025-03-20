@@ -13,6 +13,8 @@ final class BookmarksViewModel: ObservableObject {
     @Published var currentBook: CurrentBook
     @Published var favoriteBooks: [FavoriteBook]
     @Published var quotes: [Quote]
+    @Published var selectedBook: BookDetails?
+    @Published var isBookDetailsPresented: Bool = false
     
     // MARK: - Init
     init(
@@ -30,6 +32,28 @@ final class BookmarksViewModel: ObservableObject {
         self.currentBook = SampleData.currentBook
         self.favoriteBooks = SampleData.favoriteBooks
         self.quotes = SampleData.quotes
+    }
+    
+    func showBookDetails(for book: FavoriteBook) {
+        selectedBook = BookDetails(
+            coverImageName: book.imageName,
+            title: book.title,
+            author: book.author,
+            description: """
+            Секретный код скрыт в работах Леонардо да Винчи...
+            Только он поможет найти христианские святыни, дающие немыслимые власть и могущество...
+            Ключ к величайшей тайне, над которой человечество билось веками, наконец может быть найден...
+            """,
+            progress: 0.3,
+            chapters: [
+                Chapter(title: "Пролог", isRead: true, isReading: false),
+                Chapter(title: "Глава 1", isRead: true, isReading: false),
+                Chapter(title: "Глава 2", isRead: false, isReading: true),
+                Chapter(title: "Глава 3", isRead: false, isReading: false),
+                Chapter(title: "Глава 4", isRead: false, isReading: false)
+            ]
+        )
+        isBookDetailsPresented = true
     }
 }
 

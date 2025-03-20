@@ -26,7 +26,7 @@ struct MainView: View {
             handleTabChange(newTab)
         }
         .fullScreenCover(isPresented: $isBookDetailsPresented) {
-            BookDetailsView(isPresented: $isBookDetailsPresented)
+            BookDetailsView(isPresented: $isBookDetailsPresented, book: viewModel.currentBook)
         }
     }
 }

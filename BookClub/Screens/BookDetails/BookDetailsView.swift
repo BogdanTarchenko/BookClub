@@ -10,9 +10,17 @@ import SwiftUI
 struct BookDetailsView: View {
     // MARK: - Public Properties
     @Binding var isPresented: Bool
+    let book: BookDetails
     
     // MARK: - Private Properties
-    @StateObject private var viewModel = BookDetailsViewModel()
+    @StateObject private var viewModel: BookDetailsViewModel
+    
+    // MARK: - Init
+    init(isPresented: Binding<Bool>, book: BookDetails) {
+        self._isPresented = isPresented
+        self.book = book
+        self._viewModel = StateObject(wrappedValue: BookDetailsViewModel(book: book))
+    }
     
     var body: some View {
         ZStack(alignment: .top) {

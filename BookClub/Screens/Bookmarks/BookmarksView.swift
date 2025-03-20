@@ -28,6 +28,14 @@ struct BookmarksView: View {
         .onAppear {
             viewModel.loadData()
         }
+        .fullScreenCover(isPresented: $viewModel.isBookDetailsPresented) {
+            if let selectedBook = viewModel.selectedBook {
+                BookDetailsView(
+                    isPresented: $viewModel.isBookDetailsPresented,
+                    book: selectedBook
+                )
+            }
+        }
     }
 }
 
@@ -153,29 +161,33 @@ private extension BookmarksView {
     
     @ViewBuilder
     func favoriteBookItem(book: FavoriteBook) -> some View {
-        HStack(alignment: .center, spacing: Metrics.bookItemSpacing) {
-            Image(book.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
-                .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
-                .clipped()
-            
-            VStack(alignment: .leading, spacing: Metrics.textSpacing) {
-                Text(book.title.uppercased())
-                    .textStyle(.h2)
-                    .lineLimit(Metrics.titleLineLimit)
-                    .foregroundStyle(.accentDark)
+        Button(action: {
+            viewModel.showBookDetails(for: book)
+        }) {
+            HStack(alignment: .center, spacing: Metrics.bookItemSpacing) {
+                Image(book.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
+                    .clipped()
                 
-                Text(book.author)
-                    .textStyle(.bodySmall)
-                    .lineLimit(Metrics.authorLineLimit)
-                    .foregroundStyle(.accentDark)
+                VStack(alignment: .leading, spacing: Metrics.textSpacing) {
+                    Text(book.title.uppercased())
+                        .textStyle(.h2)
+                        .lineLimit(Metrics.titleLineLimit)
+                        .foregroundStyle(.accentDark)
+                    
+                    Text(book.author)
+                        .textStyle(.bodySmall)
+                        .lineLimit(Metrics.authorLineLimit)
+                        .foregroundStyle(.accentDark)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     @ViewBuilder
