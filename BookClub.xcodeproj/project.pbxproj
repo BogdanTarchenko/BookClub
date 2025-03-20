@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		8F889C432D8C92EE006BCA5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F8896A62D842510006BCA5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F8896AD2D842510006BCA5E;
+			remoteInfo = BookClub;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8F8896AE2D842510006BCA5E /* BookClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F889C3D2D8C92EE006BCA5E /* BookClubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookClubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +40,22 @@
 			path = BookClub;
 			sourceTree = "<group>";
 		};
+		8F889C3E2D8C92EE006BCA5E /* BookClubUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BookClubUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8F8896AB2D842510006BCA5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F889C3A2D8C92EE006BCA5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				8F8896B02D842510006BCA5E /* BookClub */,
+				8F889C3E2D8C92EE006BCA5E /* BookClubUITests */,
 				8F8896AF2D842510006BCA5E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8F8896AE2D842510006BCA5E /* BookClub.app */,
+				8F889C3D2D8C92EE006BCA5E /* BookClubUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +108,29 @@
 			productReference = 8F8896AE2D842510006BCA5E /* BookClub.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8F889C3C2D8C92EE006BCA5E /* BookClubUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F889C472D8C92EE006BCA5E /* Build configuration list for PBXNativeTarget "BookClubUITests" */;
+			buildPhases = (
+				8F889C392D8C92EE006BCA5E /* Sources */,
+				8F889C3A2D8C92EE006BCA5E /* Frameworks */,
+				8F889C3B2D8C92EE006BCA5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F889C442D8C92EE006BCA5E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8F889C3E2D8C92EE006BCA5E /* BookClubUITests */,
+			);
+			name = BookClubUITests;
+			packageProductDependencies = (
+			);
+			productName = BookClubUITests;
+			productReference = 8F889C3D2D8C92EE006BCA5E /* BookClubUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +143,10 @@
 				TargetAttributes = {
 					8F8896AD2D842510006BCA5E = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					8F889C3C2D8C92EE006BCA5E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 8F8896AD2D842510006BCA5E;
 					};
 				};
 			};
@@ -114,12 +166,20 @@
 			projectRoot = "";
 			targets = (
 				8F8896AD2D842510006BCA5E /* BookClub */,
+				8F889C3C2D8C92EE006BCA5E /* BookClubUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8F8896AC2D842510006BCA5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F889C3B2D8C92EE006BCA5E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -136,7 +196,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F889C392D8C92EE006BCA5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F889C442D8C92EE006BCA5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F8896AD2D842510006BCA5E /* BookClub */;
+			targetProxy = 8F889C432D8C92EE006BCA5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8F8896BA2D842511006BCA5E /* Debug */ = {
@@ -326,6 +401,38 @@
 			};
 			name = Release;
 		};
+		8F889C452D8C92EE006BCA5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tarchenko.BookClubUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BookClub;
+			};
+			name = Debug;
+		};
+		8F889C462D8C92EE006BCA5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tarchenko.BookClubUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BookClub;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +450,15 @@
 			buildConfigurations = (
 				8F8896BD2D842511006BCA5E /* Debug */,
 				8F8896BE2D842511006BCA5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F889C472D8C92EE006BCA5E /* Build configuration list for PBXNativeTarget "BookClubUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F889C452D8C92EE006BCA5E /* Debug */,
+				8F889C462D8C92EE006BCA5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

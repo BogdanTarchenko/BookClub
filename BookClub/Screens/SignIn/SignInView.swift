@@ -77,6 +77,7 @@ private extension SignInView {
             }
             .offset(x: carouselScrollOffset, y: 0)
         }
+        .accessibilityIdentifier("carouselView")
         .disabled(true)
         .onAppear {
             startCarouselAutoScroll(itemsCount: viewModel.carouselImages.count)
@@ -92,6 +93,7 @@ private extension SignInView {
                 text: $viewModel.email,
                 isPasswordVisible: $viewModel.isPasswordVisible
             )
+            .accessibilityIdentifier("emailField")
             
             DividerLine()
             
@@ -100,6 +102,7 @@ private extension SignInView {
                 text: $viewModel.password,
                 isPasswordVisible: $viewModel.isPasswordVisible
             )
+            .accessibilityIdentifier("passwordField")
         }
         .overlay(
             RoundedRectangle(cornerRadius: Metrics.inputFieldCornerRadius)
@@ -119,6 +122,7 @@ private extension SignInView {
                 .background(viewModel.isButtonActive ? .customWhite : .accentMedium)
                 .cornerRadius(Metrics.buttonCornerRadius)
         }
+        .accessibilityIdentifier("authButton")
         .padding(.horizontal)
         .disabled(!viewModel.isButtonActive)
     }

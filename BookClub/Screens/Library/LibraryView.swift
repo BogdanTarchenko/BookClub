@@ -157,13 +157,16 @@ private extension LibraryView {
                     .clipShape(.rect(cornerRadius: Metrics.bookLargeImageCornerRadius))
                     .clipped()
                 
+                Spacer()
+                    .frame(height: Metrics.textSpacing)
+                
                 Text(book.title.uppercased())
-                    .textStyle(.h2)
+                    .textStyle(.h3)
                     .lineLimit(Metrics.titleLineLimit)
                     .foregroundStyle(.accentDark)
                 
                 Text(book.author)
-                    .textStyle(.bodySmall)
+                    .textStyle(.footnote)
                     .lineLimit(Metrics.authorLineLimit)
                     .foregroundStyle(.accentDark)
                 
@@ -182,7 +185,7 @@ private extension LibraryView {
         static let sectionSpacing: CGFloat = 24
         static let titleSpacing: CGFloat = 16
         static let gridSpacing: CGFloat = UIScreen.isSmallDevice ? 8 : 16
-        static let textSpacing: CGFloat = 8
+        static let textSpacing: CGFloat = 4
         static let bookItemSpacing: CGFloat = 16
         static let bookSmallImageCornerRadius: CGFloat = smallImageHeight * 0.036
         static let bookLargeImageCornerRadius: CGFloat = largeImageHeight * 0.036
