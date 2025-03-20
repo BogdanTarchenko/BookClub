@@ -78,15 +78,40 @@ private extension LibraryView {
     
     @ViewBuilder
     var bookGrid: some View {
+        if UIScreen.isSmallDevice {
+            smallDeviceGrid
+        } else {
+            largeDeviceGrid
+        }
+    }
+    
+    @ViewBuilder
+    var smallDeviceGrid: some View {
         LazyVGrid(columns: [GridItem(.flexible())], spacing: Metrics.gridSpacing) {
             ForEach(viewModel.books) { book in
-                bookItem(book: book)
+                smallDeviceBookItem(book: book)
             }
         }
     }
     
     @ViewBuilder
-    func bookItem(book: Book) -> some View {
+    var largeDeviceGrid: some View {
+        LazyVGrid(
+            columns: [
+                GridItem(.flexible(), spacing: Metrics.gridSpacing),
+                GridItem(.flexible(), spacing: Metrics.gridSpacing),
+                GridItem(.flexible(), spacing: Metrics.gridSpacing)
+            ],
+            spacing: Metrics.gridSpacing
+        ) {
+            ForEach(viewModel.books) { book in
+                largeDeviceBookItem(book: book)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func smallDeviceBookItem(book: Book) -> some View {
         Button(action: {
             viewModel.showBookDetails(for: book)
         }) {
@@ -94,8 +119,8 @@ private extension LibraryView {
                 Image(book.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: Metrics.bookImageWidth, height: Metrics.bookImageHeight)
-                    .clipShape(.rect(cornerRadius: Metrics.bookImageCornerRadius))
+                    .frame(width: Metrics.smallImageWidth, height: Metrics.smallImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.bookSmallImageCornerRadius))
                     .clipped()
                 
                 VStack(alignment: .leading, spacing: Metrics.textSpacing) {
@@ -116,21 +141,53 @@ private extension LibraryView {
         }
         .buttonStyle(PlainButtonStyle())
     }
+    
+    @ViewBuilder
+    func largeDeviceBookItem(book: Book) -> some View {
+        Button(action: {
+            viewModel.showBookDetails(for: book)
+        }) {
+            VStack(alignment: .leading, spacing: Metrics.textSpacing) {
+                Image(book.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: Metrics.largeImageHeight)
+                    .clipShape(.rect(cornerRadius: Metrics.bookLargeImageCornerRadius))
+                    .clipped()
+                
+                Text(book.title.uppercased())
+                    .textStyle(.h2)
+                    .lineLimit(Metrics.titleLineLimit)
+                    .foregroundStyle(.accentDark)
+                
+                Text(book.author)
+                    .textStyle(.bodySmall)
+                    .lineLimit(Metrics.authorLineLimit)
+                    .foregroundStyle(.accentDark)
+                
+                Spacer()
+            }
+            .frame(maxHeight: .infinity)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
 }
 
-// MARK: - Metrics
+// MARK: - Constants
 private extension LibraryView {
     enum Metrics {
         static let bottomPadding: CGFloat = 80
         static let sectionSpacing: CGFloat = 24
         static let titleSpacing: CGFloat = 16
-        static let gridSpacing: CGFloat = 8
+        static let gridSpacing: CGFloat = UIScreen.isSmallDevice ? 8 : 16
+        static let textSpacing: CGFloat = 8
         static let bookItemSpacing: CGFloat = 16
-        static let bookImageWidth: CGFloat = 80
-        static let bookImageHeight: CGFloat = 126
-        static let bookImageCornerRadius: CGFloat = 4
-        static let textSpacing: CGFloat = 4
-        static let titleLineLimit: Int = 2
-        static let authorLineLimit: Int = 2
+        static let bookSmallImageCornerRadius: CGFloat = smallImageHeight * 0.036
+        static let bookLargeImageCornerRadius: CGFloat = largeImageHeight * 0.036
+        static let titleLineLimit: Int? = nil
+        static let authorLineLimit: Int? = nil
+        static let smallImageWidth: CGFloat = 80
+        static let smallImageHeight: CGFloat = 126
+        static let largeImageHeight: CGFloat = UIScreen.main.bounds.height * 0.204
     }
 }
